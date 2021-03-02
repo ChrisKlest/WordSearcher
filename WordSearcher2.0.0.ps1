@@ -16,7 +16,7 @@ function wrapText( $text, $delimiter, $width )
         $col += $word.Length + 1
 
         #newline using delimiter
-        if($word -eq "|"){
+        if($word -eq $delimiter){
             $word = "`n`n"
             $col = $word.Length + 1
             $newLine = 1
@@ -590,7 +590,7 @@ Function LoadFormConfig{
         # 0 Never open.
     
     #Results File Properties  
-    if($($outConfig[9]) -eq "" -or $([string]::IsNullOrEmpty($outConfig[9]))){
+    if($(!$outConfig[9]) -or $($outConfig[9]) -eq "" -or $([string]::IsNullOrEmpty($outConfig[9]))){
         $DesktopPath = [Environment]::GetFolderPath("Desktop")
         $filename = "WordSearcher"
         $fileext = ".txt"
